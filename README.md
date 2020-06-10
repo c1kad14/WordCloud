@@ -6,7 +6,7 @@ Web app for pulling words from the specified url, counting word occurences and b
 
 ### Usage
 
-Specify SQL Server connection string in appsetings.json
+Specify SQL Server connection string in appsetings.json in section WordDatabase
 Open terminal in app folder and run 
 
 ```bash
