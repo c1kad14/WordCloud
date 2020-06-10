@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+    var words = ViewBag.Words;
+}
+<h1>@ViewData["Admin"]</h1>
+
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th>Word</th>
+        <th>Count</th>
+    </thead>
+    @foreach (var word in words)
+    {
+        <tr>
+            <td>@word.Id</td>
+            <td>@word.Value</td>
+            <td>@word.Count</td>
+        </tr>
+    }
+</table>

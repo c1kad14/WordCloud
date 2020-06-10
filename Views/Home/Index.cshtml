@@ -1,0 +1,36 @@
+﻿@using Newtonsoft.Json;
+@model WordCloud.Models.UrlModel
+@{
+    ViewData["Title"] = "Index";
+    var words = ViewBag.Words;
+}
+<script src="~/js/wordcloud.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    window.onload = () => {
+        var words = @Html.Raw(JsonConvert.SerializeObject(this.ViewBag.Words));
+        console.log(words)
+        if(words)
+        WordCloud(document.getElementById('canvas'), { list: Object.entries(words)});
+    }
+</script>
+
+
+@if(this.ViewBag.Words == null)
+{
+    <div class="text-center">
+        <h1 class="display-4">Paste url:</h1>
+        <form asp-controller="Home" asp-action="Cloud" method="post">
+        <input class="form-control" type="text" name="url" asp-for="Url"/>
+
+        <button class="btn btn-primary" type="submit" value="process">Process</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <div class="row text-center">
+            <canvas id="canvas" class="text-center" width="800" height="400"></canvas>
+        </div>
+    </div>
+}
