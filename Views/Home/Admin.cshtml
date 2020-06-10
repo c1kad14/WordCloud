@@ -4,18 +4,27 @@
 }
 <h1>@ViewData["Admin"]</h1>
 
-<table class="table">
-    <thead>
-        <th>Id</th>
-        <th>Word</th>
-        <th>Count</th>
-    </thead>
-    @foreach (var word in words)
-    {
-        <tr>
-            <td>@word.Id</td>
-            <td>@word.Value</td>
-            <td>@word.Count</td>
-        </tr>
-    }
-</table>
+@if(words != null)
+{
+    <table class="table">
+        <thead>
+            <th>Id</th>
+            <th>Word</th>
+            <th>Count</th>
+        </thead>
+        @foreach (var word in words)
+        {
+            <tr>
+                <td>@word.Id</td>
+                <td>@word.Value</td>
+                <td>@word.Count</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="row">
+        No words found in the database.
+    </div>
+}

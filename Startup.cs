@@ -27,7 +27,7 @@ namespace WordCloud
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WordDataContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Azure")));
+                options.UseSqlServer(Configuration.GetConnectionString("WordDatabase")));
 
             services.AddTransient<IDataRepository<Word>, WordDataRepository>();
             services.AddTransient<IWordService, WordService>();

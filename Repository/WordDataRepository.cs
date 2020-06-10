@@ -37,7 +37,8 @@ namespace WordCloud.Repository
         public async Task<List<Word>> Get()
         {
             using var context = new WordDataContext(_dbContextOptions);
-            return await context.Words.ToListAsync();
+            var words =  await context.Words.ToListAsync();
+            return words?.Count > 0 ? words : null;
         }
 
         //methond for updating existing word entity

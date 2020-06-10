@@ -8,7 +8,6 @@
 <script type="text/javascript">
     window.onload = () => {
         var words = @Html.Raw(JsonConvert.SerializeObject(this.ViewBag.Words));
-        console.log(words)
         if(words)
         WordCloud(document.getElementById('canvas'), { list: Object.entries(words)});
     }
